@@ -1,0 +1,30 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+// scenario : User login with an username and password valid
+public class LoginSuccess {
+    @Test //tag untuk running script bawah ini
+    public void login_success(){
+        WebDriver driver; //set driver
+        String baseUrl = "https://www.saucedemo.com"; //set url
+
+        WebDriverManager.chromedriver().setup(); //set chrome driver
+
+        // apply chrome driver setup
+        driver = new ChromeDriver();
+        driver.manage().window().maximize(); // max windows
+        driver.get(baseUrl); // akses base url
+
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        String text = driver.findElement(By.className("app_logo")).getText();
+        Assert.assertEquals(text,"Swag Labs");
+
+        driver.quit();
+    }
+}
