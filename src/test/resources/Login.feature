@@ -11,6 +11,12 @@ Feature: Login
     And User clicks on login button
     Then User should see an error message
 
+  Scenario: User cannot log in with invalid password
+    Given User is on the login page
+    When User enters username and invalid password
+    And User clicks on login button
+    Then User should see an error message
+
     Scenario: User Logout
       Given User is on the login page
       When User enters valid username and password

@@ -78,4 +78,10 @@ public class LoginSteps {
         Assert.assertEquals(text_login,"Swag Labs");
         driver.quit();
     }
+
+    @When("User enters username and invalid password")
+    public void userEntersUsernameAndInvalidPassword() {
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        driver.findElement(By.id("password")).sendKeys("invalid_password");
+    }
 }
